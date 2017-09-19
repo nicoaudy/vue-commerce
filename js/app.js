@@ -77,6 +77,7 @@ new Vue({
             cartItem.product.inStock--
             cartItem.quantity++
         },
+
         decreaseQuantity(cartItem) {
             cartItem.quantity--
             cartItem.product.inStock++
@@ -85,10 +86,20 @@ new Vue({
                 this.removeItemFromCart(cartItem)
             }
         },
+
         removeItemFromCart(cartItem) {
             var index = this.cart.items.indexOf(cartItem)
             if (index !== -1) {
                 this.cart.items.splice(index, 1)
+            }
+        },
+
+        checkout() {
+            if (confirm('Are you sure that you want to purchase these product?')) {
+                this.cart.items.map(function(item){
+                    item.product.inStock += item.quantity
+                })
+                this.cart.items = []
             }
         }
     },
