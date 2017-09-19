@@ -35,7 +35,7 @@
                                 </div>
 
                                 <div class="col-xs-8 flex flex-row align-center justify-right">
-                                    <div class="number-in-stock">
+                                    <div class="number-in-stock" :class="{ few: product.inStock < 10, none: product.inStock == 0 }">
                                         {{ product.inStock }} in stock
                                     </div>
                                     <button class="btn btn-success">Add to cart</button>
