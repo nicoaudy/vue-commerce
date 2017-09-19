@@ -59,6 +59,17 @@ new Vue({
             product.inStock--
         }
     },
+    computed: {
+        cartTotal() {
+            var total = 0
+
+            this.cart.items.map(function(item){
+                total += item.quantity * item.product.price
+            })
+
+            return total
+        }
+    },
     filters: {
         currency: function(value) {
             var formatter = Intl.NumberFormat('en-USD', {
